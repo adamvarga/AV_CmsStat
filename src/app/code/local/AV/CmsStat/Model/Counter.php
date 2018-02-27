@@ -1,12 +1,24 @@
 <?php
 
 class AV_CmsStat_Model_Counter {
+	
+	/* 
+	 * 
+	 * Get resource for sql query
+	 * 
+	 * */
 
     public function getResource($query) {
         $resource = Mage::getSingleton('core/resource');
         $writeConn = $resource->getConnection('core_write');
         return $writeConn->query($query);
     }
+    
+    /*
+     * 
+     * Update key page_id, views, last_view in av_cmsstat_views table
+     * 
+     * */
 
     public function viewCounter($observer) {
         $controller = $observer->getEvent()->getControllerAction();
@@ -21,6 +33,12 @@ class AV_CmsStat_Model_Counter {
             return $this->getResource("INSERT INTO av_cmsstat_views (page_id, views, last_view) VALUES (" . $page_id . ", 1, \"" . $date . "\") ON DUPLICATE KEY UPDATE views=views+1, last_view=\"" . $date . "\"; ");
         }
     }
+    
+    /*
+     * 
+     * Set stat_view and stat_last in database with cronjob
+     * 
+     * */
 
     public function setAttribute() {
         $coreResource = Mage::getSingleton('core/resource');
