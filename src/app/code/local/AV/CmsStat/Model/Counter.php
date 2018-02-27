@@ -12,7 +12,6 @@ class AV_CmsStat_Model_Counter {
         $controller = $observer->getEvent()->getControllerAction();
         $request = $controller->getRequest();
         $page_id = (int) $request->getParam('page_id');
-        $page_title = Mage::getModel('cms/page')->load($page_id)->getTitle();
         $datetime = new DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         if (strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot")) {
