@@ -1,0 +1,10 @@
+{
+    "name":"av/cmsstat",
+    "type":"magento-module",
+    "license":"OSL-3.0",
+    "homepage":"https://github.com/adamvarga/AV_CmsStat",
+    "description":"Check the number of visitors / last visit date by cms_page",
+    "require":{
+        "magento-hackathon/magento-composer-installer":"*"
+    }
+}
