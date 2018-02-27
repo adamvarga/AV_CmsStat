@@ -1,6 +1,9 @@
 <?php
 
 class AV_CmsStat_Model_Observer {
+    /*
+     * Add stat_last and stat_view field to cms_page views
+     * */
 
     public function addNewCmsField($observer) {
         $model = Mage::registry('cms_page');
